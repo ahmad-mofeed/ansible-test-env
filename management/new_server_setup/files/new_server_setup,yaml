@@ -1,6 +1,6 @@
 ---
 - name: Install Essential Packages
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
 
@@ -18,9 +18,9 @@
           - vim
           - qemu-guest-agent
           - iptables
-        
+
 - name: Install and setup ntp
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
   tasks:
@@ -31,7 +31,7 @@
 
   - name: Copy ntp.config file
     ansible.builtin.copy:
-      src: ntp.conf.ubuntu
+      src: ntp.conf
       dest: /etc/ntpsec/ntp.conf
       owner: root
       group: root
@@ -55,8 +55,8 @@
         name: ntpsec
         state: restarted
 
-- name: Sudo users and groups        
-  hosts: linux-debian
+- name: Sudo users and groups
+  hosts: newservers
   become: true
 
   tasks:
@@ -104,13 +104,13 @@
       with_items: "{{ sudo_groups }}"
 
 - name: SSH setup
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
   tasks:
   - name: Copy sshd_config
     ansible.builtin.copy:
-      src: sshd_config_ubuntu
+      src: sshd_config
       dest: /etc/ssh/sshd_config
       owner: root
       group: root
@@ -123,7 +123,7 @@
     changed_when: yes
 
 - name: User login access for specific users
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
   tasks:
@@ -146,7 +146,7 @@
       line: "auth required pam_listfile.so onerr=fail item=group sense=allow file=/etc/login.group.allowed"
 
 - name: Syslog and Graylog
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
   tasks:
@@ -155,19 +155,19 @@
       name: rsyslog
       state: present
     notify: Restart_rsyslog
-  
+
   - name: Start and enable syslog
     ansible.builtin.service:
       name: rsyslog
       state: started
       enabled: true
 
-  - name: Add graylog to rsyslog.conf
-    ansible.builtin.lineinfile:
-      path: /etc/rsyslog.conf
-      state: present
-      line: "*.*@{{ log_server.address }}:{{ log_server.port }};RSYSLOG_SyslogProtocol23Format"
-    notify: Restart_rsyslog
+#  - name: Add graylog to rsyslog.conf
+#    ansible.builtin.lineinfile:
+#      path: /etc/rsyslog.conf
+#      state: present
+#      line: "*.*@{{ log_server.address }}:{{ log_server.port }};RSYSLOG_SyslogProtocol23Format"
+#    notify: Restart_rsyslog
 
   handlers:
   - name: Restart_rsyslog
@@ -175,93 +175,93 @@
       name:  rsyslog
       state: restarted
 
-- name: Joining the domain
-  hosts: linux-debian
-  become: true
+#- name: Joining the domain
+#  hosts: newservers
+#  become: true
 
-  tasks:
-  - name: Install required Packages
-    ansible.builtin.package:
-      pkg:
-      - realmd
-      - sssd
-      - sssd-tools
-      - libnss-sss
-      - libpam-sss
-      - adcli
-      - samba-common-bin
-      - oddjob
-      - oddjob-mkhomedir
-      - packagekit
-    
-  - name: Overwrite resolv.conf
-    ansible.builtin.copy:
-      dest: /etc/resolv.conf
-      content: |
-        domain {{ domain_settings.name }}
-        search {{ domain_settings.name }}
-        {% for entry in domain_settings.nameservers %}
-        nameserver {{ entry }}
-        {% endfor %}
-      mode: 0644
+#  tasks:
+#  - name: Install required Packages
+#    ansible.builtin.package:
+#      pkg:
+#      - realmd
+#      - sssd
+#      - sssd-tools
+#      - libnss-sss
+#      - libpam-sss
+#      - adcli
+#      - samba-common-bin
+#      - oddjob
+#      - oddjob-mkhomedir
+#      - packagekit
 
-  - name: Discover domain
-    ansible.builtin.command: realm discover {{ domain_settings.name }}
-    register: discover_output
-    ignore_errors: true
-    changed_when: discover_output.rc != 0
+#  - name: Overwrite resolv.conf
+#    ansible.builtin.copy:
+#      dest: /etc/resolv.conf
+#      content: |
+#        domain {{ domain_settings.name }}
+#        search {{ domain_settings.name }}
+#        {% for entry in domain_settings.nameservers %}
+#        nameserver {{ entry }}
+#        {% endfor %}
+#      mode: 0644
 
-  - name: Print discover domain output
-    ansible.builtin.debug:
-      msg: "{{ discover_output.stdout }}"
-    when: discover_output.rc == 0
+#  - name: Discover domain
+#    ansible.builtin.command: realm discover {{ domain_settings.name }}
+#    register: discover_output
+#    ignore_errors: true
+#    changed_when: discover_output.rc != 0
 
-  - name: Join the domain
-    ansible.builtin.shell:
-      cmd: echo "{{ domain_join_password }}" | realm join -U {{ domain_settings.join_name }} {{ domain_settings.name }}
-    ignore_errors: true
-    register: domain_join
-    when: discover_output.rc == 0
-    changed_when: domain_join.rc == 0
-    notify: Restart_sssd  
-     
-  - name: Create home for login users from domain
-    ansible.builtin.lineinfile:
-      path: /etc/pam.d/common-session
-      state: present
-      line: session optional pam_mkhomedir.so skel=/etc/skel umask=077
-    when: domain_join.rc == 0
+#  - name: Print discover domain output
+#    ansible.builtin.debug:
+#      msg: "{{ discover_output.stdout }}"
+#    when: discover_output.rc == 0
 
-  - name: Add fallback_homedir
-    ansible.builtin.lineinfile:
-      path: /etc/sssd/sssd.conf
-      regexp: '^fallback_homedir*'
-      line: fallback_homedir = {{ domain_settings.home_path }}/%u@%d
-      state: present
-      backrefs: true
-    when: domain_join.rc == 0 and domain_settings.home_path is defined
+#  - name: Join the domain
+#    ansible.builtin.shell:
+#      cmd: echo "{{ domain_join_password }}" | realm join -U {{ domain_settings.join_name }} {{ domain_settings.name }}
+#    ignore_errors: true
+#    register: domain_join
+#    when: discover_output.rc == 0
+#    changed_when: domain_join.rc == 0
+#    notify: Restart_sssd  
 
-  - name: Add ad_server
-    ansible.builtin.lineinfile:
-      path: /etc/sssd/sssd.conf
-      line: ad_server = {{ domain_settings.ad_server }}
-      state: present
-    when:  domain_settings.ad_server is defined
+#  - name: Create home for login users from domain
+#    ansible.builtin.lineinfile:
+#      path: /etc/pam.d/common-session
+#      state: present
+#      line: session optional pam_mkhomedir.so skel=/etc/skel umask=077
+#    when: domain_join.rc == 0
 
-  - name: Add ad_backup_server
-    ansible.builtin.lineinfile:
-      path: /etc/sssd/sssd.conf
-      line: ad_backup_server = {{ domain_settings.ad_backup_server }}
-      state: present
-    when:  domain_settings.ad_backup_server is defined
+#  - name: Add fallback_homedir
+#    ansible.builtin.lineinfile:
+#      path: /etc/sssd/sssd.conf
+#      regexp: '^fallback_homedir*'
+#      line: fallback_homedir = {{ domain_settings.home_path }}/%u@%d
+#      state: present
+#      backrefs: true
+#    when: domain_join.rc == 0 and domain_settings.home_path is defined
 
-  handlers:
-  - name: Restart_sssd
-    ansible.builtin.script: restart_sssd.sh
+#  - name: Add ad_server
+#    ansible.builtin.lineinfile:
+#      path: /etc/sssd/sssd.conf
+#      line: ad_server = {{ domain_settings.ad_server }}
+#      state: present
+#    when:  domain_settings.ad_server is defined
+
+#  - name: Add ad_backup_server
+#    ansible.builtin.lineinfile:
+#      path: /etc/sssd/sssd.conf
+#      line: ad_backup_server = {{ domain_settings.ad_backup_server }}
+#      state: present
+#    when:  domain_settings.ad_backup_server is defined
+
+#  handlers:
+#  - name: Restart_sssd
+#    ansible.builtin.script: restart_sssd.sh
 
 
 - name: Setup SNMP
-  hosts: linux-debian
+  hosts: newservers
   become: true
 
   tasks:
@@ -286,42 +286,42 @@
       name: snmpd
       state: restarted
 
-- name: Setup webmin
-  hosts: linux-debian
-  become: true
+#- name: Setup webmin
+#  hosts: newservers
+#  become: true
 
   
 
-  tasks:
-  - name: Check if Webmin is installed
-    ansible.builtin.package_facts:
+#  tasks:
+#  - name: Check if Webmin is installed
+#    ansible.builtin.package_facts:
 
-  - name: Execute the setup script
-    ansible.builtin.script: setup-repos-webmin.sh
-    when: "'webmin' not in ansible_facts.packages"
-    register: webmin_new
-    
-  - name: Install webmin
-    ansible.builtin.package:
-      name: webmin
-    notify: Extract_webmin_configuration
-      
-  - name: Comment out the specific pam_sss.so line in /etc/pam.d/common-account
-    ansible.builtin.lineinfile:
-      path: /etc/pam.d/common-account
-      regexp: '^\s*account\s+\[default=bad\s+success=ok\s+user_unknown=ignore\]\s+pam_sss.so'
-      line: '# account [default=bad success=ok user_unknown=ignore] pam_sss.so'
-      state: present
-    
-  handlers:
-  - name: Extract_webmin_configuration
-    ansible.builtin.unarchive:
-      src: webmin-config  # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack. If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
-      dest: /  # required. Remote absolute path where the archive should be unpacked.
+#  - name: Execute the setup script
+#    ansible.builtin.script: setup-repos-webmin.sh
+#    when: "'webmin' not in ansible_facts.packages"
+#    register: webmin_new
+#    
+#  - name: Install webmin
+#    ansible.builtin.package:
+#      name: webmin
+#    notify: Extract_webmin_configuration
+#      
+#  - name: Comment out the specific pam_sss.so line in /etc/pam.d/common-account
+#    ansible.builtin.lineinfile:
+#      path: /etc/pam.d/common-account
+#      regexp: '^\s*account\s+\[default=bad\s+success=ok\s+user_unknown=ignore\]\s+pam_sss.so'
+#      line: '# account [default=bad success=ok user_unknown=ignore] pam_sss.so'
+#      state: present
+#    
+#  handlers:
+#  - name: Extract_webmin_configuration
+#    ansible.builtin.unarchive:
+#      src: webmin-config  # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack. If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
+#      dest: /  # required. Remote absolute path where the archive should be unpacked.
 
 - name: Reboot the machine
   become: true
-  hosts: linux-debian
+  hosts: newservers
 
   tasks:
 
@@ -334,5 +334,6 @@
     ansible.builtin.reboot:
       msg: "Reboot initiated by Ansible to apply new SSH port configuration"
       reboot_timeout: 100
+
 
 

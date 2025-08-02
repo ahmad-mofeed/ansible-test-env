@@ -1,0 +1,2 @@
+ansible_port: 22192
+ansible_connection: ssh
