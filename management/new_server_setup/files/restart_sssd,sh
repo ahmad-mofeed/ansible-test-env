@@ -1,0 +1,3 @@
+service sssd stop ; 
+rm -rf /var/lib/sss/db/* ; 
+service sssd start ;

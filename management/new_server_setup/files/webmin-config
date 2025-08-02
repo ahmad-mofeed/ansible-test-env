@@ -1,0 +1,277 @@
+etc/                                                                                                0000777 0000000 0000000 00000000000 14650434636 006536  5                                                                                                    ustar                                                                                                                                                                                                                                                          etc/webmin/                                                                                         0000777 0000000 0000000 00000000000 14650434705 010014  5                                                                                                    ustar                                                                                                                                                                                                                                                          etc/webmin/acl/                                                                                     0000777 0000000 0000000 00000000000 14650434636 010556  5                                                                                                    ustar                                                                                                                                                                                                                                                          etc/webmin/acl/config                                                                               0000777 0000000 0000000 00000000052 14647712334 011746  0                                                                                                    ustar                                                                                                                                                                                                                                                          display=1
+ssleay=/usr/bin/openssl
+order=0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      etc/webmin/config                                                                                   0000777 0000000 0000000 00000001127 14647713334 011214  0                                                                                                    ustar                                                                                                                                                                                                                                                          by_view=0
+passwd_pindex=1
+tempdelete_days=7
+passwd_uindex=0
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+passwd_cindex=2
+passwd_file=/etc/shadow
+find_pid_command=ps auwwwx | grep NAME | grep -v grep | awk '{ print $2 }'
+passwd_mindex=4
+ld_env=LD_LIBRARY_PATH
+os_type=debian-linux
+os_version=13.0
+real_os_type=Ubuntu Linux
+real_os_version=22.04.3
+lang=en
+log=1
+referers_none=1
+md5pass=0
+theme=authentic-theme
+product=webmin
+noselfwebminup=1
+webprefix=
+os_eol_db=2.200
+os_ext_eol=04/09/2032
+os_eol_about=0
+os_eol_in=2 years
+os_eol=04/01/2027
+os_ext_eol_in=7 years
+noremember=
+passapi=0
+realname=
+                                                                                                                                                                                                                                                                                                                                                                                                                                         etc/webmin/config.aclbackup                                                                         0000777 0000000 0000000 00000001127 14647713334 013140  0                                                                                                    ustar                                                                                                                                                                                                                                                          by_view=0
+passwd_pindex=1
+tempdelete_days=7
+passwd_uindex=0
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+passwd_cindex=2
+passwd_file=/etc/shadow
+find_pid_command=ps auwwwx | grep NAME | grep -v grep | awk '{ print $2 }'
+passwd_mindex=4
+ld_env=LD_LIBRARY_PATH
+os_type=debian-linux
+os_version=13.0
+real_os_type=Ubuntu Linux
+real_os_version=22.04.3
+lang=en
+log=1
+referers_none=1
+md5pass=0
+theme=authentic-theme
+product=webmin
+noselfwebminup=1
+webprefix=
+os_eol_db=2.200
+os_ext_eol=04/09/2032
+os_eol_about=0
+os_eol_in=2 years
+os_eol=04/01/2027
+os_ext_eol_in=7 years
+noremember=
+passapi=0
+realname=
+                                                                                                                                                                                                                                                                                                                                                                                                                                         etc/webmin/miniserv.conf                                                                            0000777 0000000 0000000 00000003032 14647713370 012524  0                                                                                                    ustar                                                                                                                                                                                                                                                          port=10000
+root=/usr/share/webmin
+mimetypes=/usr/share/webmin/mime.types
+addtype_cgi=internal/cgi
+realm=Webmin Server
+logfile=/var/webmin/miniserv.log
+errorlog=/var/webmin/miniserv.error
+pidfile=/var/webmin/miniserv.pid
+logtime=168
+ssl=1
+no_ssl2=1
+no_ssl3=1
+ssl_honorcipherorder=1
+no_sslcompression=1
+env_WEBMIN_CONFIG=/etc/webmin
+env_WEBMIN_VAR=/var/webmin
+atboot=1
+logout=/etc/webmin/logout-flag
+listen=10000
+denyfile=\.pl$
+log=1
+blockhost_failures=5
+blockhost_time=60
+syslog=1
+ipv6=1
+session=1
+premodules=WebminCore
+server=MiniServ/2.200
+userfile=/etc/webmin/miniserv.users
+keyfile=/etc/webmin/miniserv.pem
+passwd_file=/etc/shadow
+passwd_uindex=0
+passwd_pindex=1
+passwd_cindex=2
+passwd_mindex=4
+passwd_mode=0
+preroot=authentic-theme
+passdelay=1
+failed_script=/etc/webmin/failed.pl
+cipher_list_def=1
+logout_script=/etc/webmin/logout.pl
+login_script=/etc/webmin/login.pl
+sudo=1
+error_handler_401=401.cgi
+error_handler_403=403.cgi
+error_handler_404=404.cgi
+websockets_/authentic-theme/ws-555=host=127.0.0.1 port=555 wspath=/ user=root time=1721734678
+websockets_/authentic-theme/ws-556=host=127.0.0.1 port=556 wspath=/ user=root time=1721734681
+websockets_/authentic-theme/ws-557=host=127.0.0.1 port=557 wspath=/ user=root time=1721734684
+websockets_/authentic-theme/ws-558=host=127.0.0.1 port=558 wspath=/ user=root time=1721734687
+websockets_/authentic-theme/ws-559=host=127.0.0.1 port=559 wspath=/ user=root time=1721734690
+session_ip=
+blockuser_time=
+blockuser_failures=
+utmp=
+logouttime=
+no_pam=0
+blocklock=
+pam_end=1
+pam_conv=
+pamany=root
+unixauth=support
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      etc/webmin/miniserv.conf.aclbackup                                                                  0000777 0000000 0000000 00000003032 14647713370 014450  0                                                                                                    ustar                                                                                                                                                                                                                                                          port=10000
+root=/usr/share/webmin
+mimetypes=/usr/share/webmin/mime.types
+addtype_cgi=internal/cgi
+realm=Webmin Server
+logfile=/var/webmin/miniserv.log
+errorlog=/var/webmin/miniserv.error
+pidfile=/var/webmin/miniserv.pid
+logtime=168
+ssl=1
+no_ssl2=1
+no_ssl3=1
+ssl_honorcipherorder=1
+no_sslcompression=1
+env_WEBMIN_CONFIG=/etc/webmin
+env_WEBMIN_VAR=/var/webmin
+atboot=1
+logout=/etc/webmin/logout-flag
+listen=10000
+denyfile=\.pl$
+log=1
+blockhost_failures=5
+blockhost_time=60
+syslog=1
+ipv6=1
+session=1
+premodules=WebminCore
+server=MiniServ/2.200
+userfile=/etc/webmin/miniserv.users
+keyfile=/etc/webmin/miniserv.pem
+passwd_file=/etc/shadow
+passwd_uindex=0
+passwd_pindex=1
+passwd_cindex=2
+passwd_mindex=4
+passwd_mode=0
+preroot=authentic-theme
+passdelay=1
+failed_script=/etc/webmin/failed.pl
+cipher_list_def=1
+logout_script=/etc/webmin/logout.pl
+login_script=/etc/webmin/login.pl
+sudo=1
+error_handler_401=401.cgi
+error_handler_403=403.cgi
+error_handler_404=404.cgi
+websockets_/authentic-theme/ws-555=host=127.0.0.1 port=555 wspath=/ user=root time=1721734678
+websockets_/authentic-theme/ws-556=host=127.0.0.1 port=556 wspath=/ user=root time=1721734681
+websockets_/authentic-theme/ws-557=host=127.0.0.1 port=557 wspath=/ user=root time=1721734684
+websockets_/authentic-theme/ws-558=host=127.0.0.1 port=558 wspath=/ user=root time=1721734687
+websockets_/authentic-theme/ws-559=host=127.0.0.1 port=559 wspath=/ user=root time=1721734690
+session_ip=
+blockuser_time=
+blockuser_failures=
+utmp=
+logouttime=
+no_pam=0
+blocklock=
+pam_end=1
+pam_conv=
+pamany=root
+unixauth=support
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      etc/webmin/miniserv.pem                                                                             0000777 0000000 0000000 00000005651 14647712334 012370  0                                                                                                    ustar                                                                                                                                                                                                                                                          -----BEGIN CERTIFICATE-----
+MIIDhDCCAmygAwIBAgIUafZCKaWRQpuxFgRNEgigs7KP6OYwDQYJKoZIhvcNAQEL
+BQAwNjERMA8GA1UEAwwISVQtTmFkZXIxCzAJBgNVBAYTAlVTMRQwEgYDVQQHDAtT
+YW50YSBDbGFyYTAeFw0yNDA3MjMxMTMyNDRaFw0yOTA3MjIxMTMyNDRaMDYxETAP
+BgNVBAMMCElULU5hZGVyMQswCQYDVQQGEwJVUzEUMBIGA1UEBwwLU2FudGEgQ2xh
+cmEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCSHku0eZfDJb53V1SK
+57v16DDTgtRMHi0Hrzaik2SqtoLK6arYJGErOESFGnexmIR6/FeUYfCM2/1Fg6Qy
+QyW2U6DME1IC6B5TOpHLRmW8yrQUsjPeYAAVXLiYz8QlL9xdD4Y69X8bviBfCqqI
+y/nfJjd1GGtY3+hqOXJ+mQsFGFfreHY6VU4exxmpQWAsxShLLxvkvvu8XfzRaeHF
+A5RvZnB2hIiFr9J8+p/Km4RqaDhsfGe/tV//BJTV3wZ3zqIPJpNYAHdnbLI/axYO
+2aC2VHKwvIYYH2Z3mgN+x65H2/n7DZre6apm/bPAZqjwj0ApDmiyUurQ3P+YRVxf
+UHTLAgMBAAGjgYkwgYYwHQYDVR0OBBYEFAgUjXQScII+kL/V77fQUfyUWCPbMB8G
+A1UdIwQYMBaAFAgUjXQScII+kL/V77fQUfyUWCPbMA8GA1UdEwEB/wQFMAMBAf8w
+HgYDVR0RBBcwFYIISVQtTmFkZXKCCWxvY2FsaG9zdDATBgNVHSUEDDAKBggrBgEF
+BQcDATANBgkqhkiG9w0BAQsFAAOCAQEAVigNk90hLKQiSHNXZLJLNfqJgSVLP0Kv
+pvqbG2bxhtD+XjEQcP8qp6t11YgK9D/m06ShHAt3pTQRTbaIgD0yeSByw+O05ps1
+FCsCaviZaEp0La1hEtaxNWF4Zh5gF12f9LwPhOduCvNeauZSYXm0yFVZ0fpBVqPD
+K2TQ4ex02uBRmmGZJefHEEBdBEAxfbNj/3UUdKVzxdO6sL6bhrcH2U1KVkIhbbkB
+abJCnujQxo7akLXuS9Q22aH+fCoZ0qu4QqBrmpiNh2VapQ2ShqtXbvwpYE0PKrps
+Sp29llbQ6+CAfMOo65KIqdbodMwoUL6otpGrqOIAmRzo8YS7YpVpuw==
+-----END CERTIFICATE-----
+-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCSHku0eZfDJb53
+V1SK57v16DDTgtRMHi0Hrzaik2SqtoLK6arYJGErOESFGnexmIR6/FeUYfCM2/1F
+g6QyQyW2U6DME1IC6B5TOpHLRmW8yrQUsjPeYAAVXLiYz8QlL9xdD4Y69X8bviBf
+CqqIy/nfJjd1GGtY3+hqOXJ+mQsFGFfreHY6VU4exxmpQWAsxShLLxvkvvu8XfzR
+aeHFA5RvZnB2hIiFr9J8+p/Km4RqaDhsfGe/tV//BJTV3wZ3zqIPJpNYAHdnbLI/
+axYO2aC2VHKwvIYYH2Z3mgN+x65H2/n7DZre6apm/bPAZqjwj0ApDmiyUurQ3P+Y
+RVxfUHTLAgMBAAECggEAEgakxkX93/hHEAf5CQ3flU2owF8ye5V5bqpB7jqKv7i2
+V/wNtI6AYkmVwmnqfEFZjqaU01xlxaraCvpbhkvcWirk+mgjxPIH07K1C8PKh0jm
+gGsflP545CnFKCzxgLjv0Zc5swpYPP7ulWsGcMvhLpNTYiG6FIPC81/U7SNKRb10
+V/KxnUU1gkOd3vF6kRLS5+/jUuPSXiIvFpVPgZd2g8lVn5RS12Mf64Pdyc4bPQXu
+r6VklPEdcxwykO7qYStRdV13nHAIb1kTghcLtMH1FQj52sImPLVTGhVhQ27c/h0w
+BDYD2ECOrlURPRtwmcVECdn1RSTfBPxwhxHmyDNluQKBgQC9O8Jr2DdbeyRrmerx
+wiJdwCbezyMFp1wMxhS4Ft58YG3uuxnXb/G7NsTSMq9pZbEXAj9RQ2EA0taDdp7y
+P3xNrBS6H168rwFpphetXEGHlTN+vC9JwulqStpv+jpHRRBVBtH8YxaR5YtATgcV
+2Ke2vCrFSSHB8lPchNxQQbd+1QKBgQDFrDoXbgcwTgt7aYEhG7fI53b1NxKxBnTe
+ksbdJwmTMLJ8UgKp3/J8AesplicHsxTM8y5baBssyehKpbfaNavi0dzoZB37NP/C
+NqUDMMCh8q0pqkTSO5PHULwM9Blfok+VE/Vzaasrifj4rnshkqL9wOyombpSMdwU
+TfFVAH41HwKBgBT+l1BtuZ6Np/nEJtvRpQxvsCBSLNmIut6z70KJTv/PlwLAgVp0
+kgYqSmXjt7Bi1uXtmubCKfX0blZBh9rqjjjz2YzYxCL865Q0GDZkoOSQ+hiaekid
+tlXTni6EPYkAsZItYoi02aEwLWXiAkk7M0hD0h73QSaKYyF5IBRLZjdNAoGAZRNu
+1OIvDNUra9yD6dEJhdJNco/Jn/lkMxcsVpMKg1gIPCeXMxPPIve8LpSXuokonq/O
+SXEPTDSl8d2RCCQfkyiqY64l4ni0OrPEZsA8D9NOFhr5e+J46xbuQVVj0BHnzZva
+CzzCCM5RH5/gWEdpzoUivgd1TWgvV7aPK17IKhMCgYAVxbnPUePG+LEwMYt86vTA
+AHZQhanRxP1wqhDBH/sXTyzEi5y1s1ln1uRu0VCiy1taR7XXbr6DTz1Q3gosizpJ
+ILH3ElVioPjGK5ACST3Qjk3qG93wWw3V/rDkbKwzHoRaGE8sH1O6yXcLYaUA5L2y
+es1RaDQf+Fj3SA3ifk52IA==
+-----END PRIVATE KEY-----
+                                                                                       etc/webmin/miniserv.users                                                                           0000777 0000000 0000000 00000000037 14647713334 012742  0                                                                                                    ustar                                                                                                                                                                                                                                                          root:x:0
+support:x::::::::::::
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 etc/webmin/support.acl                                                                              0000777 0000000 0000000 00000000077 14647713334 012224  0                                                                                                    ustar                                                                                                                                                                                                                                                          rpc=0
+feedback=0
+root=
+fileunix=
+noconfig=1
+negative=0
+_safe=1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                 etc/webmin/webmin/                                                                                  0000777 0000000 0000000 00000000000 14650434636 011300  5                                                                                                    ustar                                                                                                                                                                                                                                                          etc/webmin/webmin/config                                                                            0000777 0000000 0000000 00000000207 14647712334 012472  0                                                                                                    ustar                                                                                                                                                                                                                                                          warn_days=7
+upmissing=0
+letsencrypt_reuse=1
+letsencrypt_algo=rsa
+upshow=1
+letsencrypt_dns_wait=10
+updays=1
+update=0
+osdn=1
+cron_mode=0
+                                                                                                                                                                                                                                                                                                                                                                                         etc/webmin/webmin.acl                                                                               0000777 0000000 0000000 00000001731 14647713334 011767  0                                                                                                    ustar                                                                                                                                                                                                                                                          root: acl adsl-client apache at backup-config bacula-backup bandwidth bind8 change-user cluster-copy cluster-cron cluster-passwd cluster-shell cluster-software cluster-useradmin cluster-usermin cluster-webmin cpan cron custom dfsadmin dhcpd dovecot exim exports fail2ban fdisk fetchmail filemin filter firewall firewall6 firewalld fsdump heartbeat htaccess-htpasswd idmapd inetd init inittab ipfilter ipfw ipsec iscsi-client iscsi-server iscsi-target iscsi-tgtd krb5 ldap-client ldap-server ldap-useradmin logrotate logviewer lpadmin lvm mailboxes mailcap man mount mysql net nis openslp package-updates pam pap passwd phpini postfix postgresql ppp-client pptp-client pptp-server proc procmail proftpd qmailadmin quota raid samba sarg sendmail servers shell shorewall shorewall6 smart-status smf software spam squid sshd status stunnel syslog-ng syslog system-status tcpwrappers time tunnel updown useradmin usermin webalizer webmin webmincron webminlog xinetd xterm
+support: firewall
+                                       etc/webmin/webmin.groups                                                                            0000777 0000000 0000000 00000000032 14650434716 012536  0                                                                                                    ustar                                                                                                                                                                                                                                                          support:support:firewall::                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      tmp/                                                                                                0000777 0000000 0000000 00000000000 14650434636 006563  5                                                                                                    ustar                                                                                                                                                                                                                                                          tmp/backup-config-manifests/                                                                        0000777 0000000 0000000 00000000000 14650434636 013262  5                                                                                                    ustar                                                                                                                                                                                                                                                          tmp/backup-config-manifests/acl                                                                     0000777 0000000 0000000 00000000317 14647713504 013750  0                                                                                                    ustar                                                                                                                                                                                                                                                          /etc/webmin/miniserv.users
+/etc/webmin/webmin.acl
+/etc/webmin/root.acl
+/etc/webmin/support.acl
+/etc/webmin/support.acl
+/etc/webmin/config.aclbackup
+/etc/webmin/miniserv.conf.aclbackup
+/etc/webmin/acl/config
+                                                                                                                                                                                                                                                                                                                 tmp/backup-config-manifests/webmin                                                                  0000777 0000000 0000000 00000000333 14647713504 014470  0                                                                                                    ustar                                                                                                                                                                                                                                                          /etc/webmin/config
+/etc/webmin/miniserv.conf
+/etc/webmin/webmin.cats
+/etc/webmin/webmin.catnames
+/etc/webmin/webmin.desc
+/etc/webmin/miniserv.pem
+/etc/webmin/newmodules
+/etc/webmin/custom-lang
+/etc/webmin/webmin/config
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
